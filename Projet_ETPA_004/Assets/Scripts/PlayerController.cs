@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
         public float minSpeed = 2.5f;
         public float maxSpeed = 3.5f;
         public static GameObject foodObject;
+        public ParticleSystem dustParticles;
 
     [Header("Stress Parameters")]
         public float currentStressLevel = 0f;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
         [Range(0.01f, 0.05f)]
         public float stressFactor;
         public bool isTooStress = false;
+        public ParticleSystem burnoutParticles;
 
     [Header("Others Parameters")]
         public bool isPlatePicked = false;
@@ -56,6 +58,11 @@ public class PlayerController : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
 
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                dustParticles.Play();
+            }
+
             if (sprintInput && isPlatePicked ||Input.GetKey(KeyCode.LeftShift) && isPlatePicked)
             {
                 minSpeed = maxSpeed;
@@ -67,6 +74,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                dustParticles.Stop();
                 minSpeed = 2.5f;
             }
 
@@ -89,6 +97,7 @@ public class PlayerController : MonoBehaviour
 
         if (currentStressLevel >= maxStressLevel)
         {
+            burnoutParticles.Play();
             isTooStress = true;
             currentStressLevel = maxStressLevel;
         }
@@ -116,6 +125,7 @@ public class PlayerController : MonoBehaviour
                 //Set the stress of the character to false
                 isTooStress = false;
 
+                burnoutParticles.Stop();
                 //The player has no more dishes
                 isPlatePicked = false;
             }
