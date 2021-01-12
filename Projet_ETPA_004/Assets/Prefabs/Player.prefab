@@ -105,7 +105,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -1541,7 +1541,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.84
+      scalar: 2
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1594,7 +1594,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -11.4
+      scalar: -10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4769,6 +4769,7 @@ GameObject:
   - component: {fileID: 5472063617001682817}
   - component: {fileID: 5472063617001682823}
   - component: {fileID: 5472063617001682822}
+  - component: {fileID: 2539701545359897425}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4876,6 +4877,10 @@ MonoBehaviour:
   burnoutParticles: {fileID: 7907323089857614815}
   isPlatePicked: 0
   isAcPressed: 0
+  WinParticles: {fileID: 0}
+  burnoutSound: {fileID: 0}
+  dropPlateSound: {fileID: 0}
+  switchSound: {fileID: 0}
 --- !u!136 &5472063617001682823
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4906,6 +4911,102 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!82 &2539701545359897425
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5472063617001682828}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5472063618371297924
 GameObject:
   m_ObjectHideFlags: 0
@@ -4995,7 +5096,7 @@ PrefabInstance:
     - target: {fileID: 7907323090260406129, guid: c95d52c59833de7419d9545e4fbd12f1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.88
+      value: -0.76
       objectReference: {fileID: 0}
     - target: {fileID: 7907323090260406129, guid: c95d52c59833de7419d9545e4fbd12f1,
         type: 3}
@@ -5005,7 +5106,7 @@ PrefabInstance:
     - target: {fileID: 7907323090260406129, guid: c95d52c59833de7419d9545e4fbd12f1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7907323090260406129, guid: c95d52c59833de7419d9545e4fbd12f1,
         type: 3}
@@ -5051,6 +5152,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Smoke Particules
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907323090260406134, guid: c95d52c59833de7419d9545e4fbd12f1,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907323090260406134, guid: c95d52c59833de7419d9545e4fbd12f1,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907323090260406134, guid: c95d52c59833de7419d9545e4fbd12f1,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c95d52c59833de7419d9545e4fbd12f1, type: 3}

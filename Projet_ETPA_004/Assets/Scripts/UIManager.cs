@@ -199,22 +199,17 @@ public class UIManager : MonoBehaviour
             if (pourcentage >= 33 && pourcentage < 66)
             {
                 stars[0].SetActive(true);
-                Debug.Log(pourcentage);
             }
             else if (pourcentage >= 66f && pourcentage < 70)
             {
                 stars[0].SetActive(true);
                 stars[1].SetActive(true);
-
-                Debug.Log(pourcentage);
             }
             else if (pourcentage > 70)
             {
                 stars[0].SetActive(true);
                 stars[1].SetActive(true);
                 stars[2].SetActive(true);
-
-                Debug.Log(pourcentage);
             }
         }
     }

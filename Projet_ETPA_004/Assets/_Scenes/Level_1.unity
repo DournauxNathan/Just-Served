@@ -1256,6 +1256,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365179900}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!198 &410389340 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7535607469619513247, guid: ac10190cf200c4f7e881ca8e41d3d760,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487400284}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &446059167
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,6 +2040,16 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7907323090260406134, guid: c95d52c59833de7419d9545e4fbd12f1,
+        type: 3}
+      propertyPath: ShapeModule.angle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907323090260406134, guid: c95d52c59833de7419d9545e4fbd12f1,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.41
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c95d52c59833de7419d9545e4fbd12f1, type: 3}
 --- !u!4 &819656663 stripped
@@ -2450,18 +2466,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1137271166, guid: ce72a2b9d1f272f42a29e1136c9aa6ca, type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1137271166, guid: ce72a2b9d1f272f42a29e1136c9aa6ca, type: 3}
-      propertyPath: VelocityModule.z.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1137271166, guid: ce72a2b9d1f272f42a29e1136c9aa6ca, type: 3}
-      propertyPath: VelocityModule.y.scalar
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5472063617001682816, guid: ce72a2b9d1f272f42a29e1136c9aa6ca,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2517,6 +2521,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5472063617001682817, guid: ce72a2b9d1f272f42a29e1136c9aa6ca,
+        type: 3}
+      propertyPath: WinParticles
+      value: 
+      objectReference: {fileID: 410389340}
+    - target: {fileID: 5472063617001682817, guid: ce72a2b9d1f272f42a29e1136c9aa6ca,
+        type: 3}
+      propertyPath: burnoutSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 72949934fd98f1c47bd4cde8fb0173a8, type: 3}
+    - target: {fileID: 5472063617001682817, guid: ce72a2b9d1f272f42a29e1136c9aa6ca,
+        type: 3}
+      propertyPath: switchSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8109a392bce3e1e40a8c0d96be8e8c35, type: 3}
     - target: {fileID: 5472063617001682828, guid: ce72a2b9d1f272f42a29e1136c9aa6ca,
         type: 3}
       propertyPath: m_Name
@@ -5297,7 +5316,7 @@ PrefabInstance:
     - target: {fileID: 1452614889775176269, guid: e215ca610a263ea4a8c3f961499ba46c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -2.911499
+      value: -2.911438
       objectReference: {fileID: 0}
     - target: {fileID: 1452614890702543901, guid: e215ca610a263ea4a8c3f961499ba46c,
         type: 3}
