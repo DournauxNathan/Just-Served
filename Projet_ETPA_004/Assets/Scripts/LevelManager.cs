@@ -80,7 +80,7 @@ public class LevelManager : MonoBehaviour
     private void FixedUpdate()
     {
         IncreaseDifficulty();
-        
+
         if (isGameInit)
         {
             StartLevel();
@@ -148,13 +148,11 @@ public class LevelManager : MonoBehaviour
             {
                 conveyorBeltSpeed = conveyorBeltMaxSpeed;
                 var main = smokeParticules.main;
-                main.startLifetime = UIManager.instance.temperatureBar.fillAmount;
-                smokeParticules.gameObject.SetActive(true);
-                smokeParticules.Play();
+                main.startLifetime = (UIManager.instance.temperatureBar.fillAmount - .5f) * 100f;
+
             }
             if (temperature < (maxTemperature * .7f))
             {
-                smokeParticules.gameObject.SetActive(false);
                 conveyorBeltSpeed = 0.5f; ;
             }
         }
