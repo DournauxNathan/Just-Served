@@ -12,29 +12,39 @@ public class PlayerController : MonoBehaviour
     private SlotManager _slotManagerScript;
 
     [Header("Player's Movement")]
-        public float minSpeed = 2.5f;
-        public float maxSpeed = 3.5f;
-        public static GameObject foodObject;
-        public ParticleSystem dustParticles;
+    public float minSpeed = 2.5f;
+    public float maxSpeed = 3.5f;
+    public static GameObject foodObject;
+    public ParticleSystem dustParticles;
 
     [Header("Stress Parameters")]
-        public float currentStressLevel = 0f;
-        public float maxStressLevel = 100f;
-        [Range(0.01f, 0.05f)]
-        public float stressFactor;
-        public bool isTooStress = false;
-        public ParticleSystem burnoutParticles;
+    public float currentStressLevel = 0f;
+    public float maxStressLevel = 100f;
+    [Range(0.01f, 0.05f)]
+    public float stressFactor;
+    public bool isTooStress = false;
+    public ParticleSystem burnoutParticles;
 
     [Header("Others Parameters")]
-        public bool isPlatePicked = false;
-        public bool isAcPressed = false;
-        private GameObject obj;
+    public bool isPlatePicked = false;
+    public bool isAcPressed = false;
+    private GameObject obj;
+    public ParticleSystem WinParticles;
+
+    [Header("Sounds effects")]
+    private AudioSource playerAudio;
+    public AudioClip burnoutSound;
+    public AudioClip dropPlateSound;
+    public AudioClip switchSound;
+
 
     // Start is called before the first frame update
     void Start()
     {
         GameObject stockage = GameObject.FindGameObjectWithTag("Stockage");
         _slotManagerScript = stockage.GetComponentInChildren<SlotManager>();
+
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -58,7 +68,7 @@ public class PlayerController : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) || sprintInput && !isTooStress)
             {
                 dustParticles.Play();
             }
@@ -100,6 +110,9 @@ public class PlayerController : MonoBehaviour
             burnoutParticles.Play();
             isTooStress = true;
             currentStressLevel = maxStressLevel;
+
+            //Destroy the gameobject hold by the player 
+            Destroy(foodObject);
         }
     }
 
@@ -126,8 +139,12 @@ public class PlayerController : MonoBehaviour
                 isTooStress = false;
 
                 burnoutParticles.Stop();
+
+                playerAudio.PlayOneShot(burnoutSound, 1.0f);
+
                 //The player has no more dishes
                 isPlatePicked = false;
+
             }
         }
     }
@@ -152,6 +169,8 @@ public class PlayerController : MonoBehaviour
                     UIManager.instance.UpdateScore(1);
                 }
 
+                WinParticles.Play();
+
                 //Destroy the gameobject hold by the player 
                 Destroy(foodObject);
 
@@ -165,6 +184,7 @@ public class PlayerController : MonoBehaviour
             if (other.CompareTag("AC Button") && !LevelManager.instance.isAcOn)
             {
                 LevelManager.instance.AirConditionOn();
+                playerAudio.PlayOneShot(switchSound,1f);
             }
 
             if (other.CompareTag("Food"))
