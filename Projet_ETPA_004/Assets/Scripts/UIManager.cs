@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     private PlayerController playerControllerScript;
 
     [Header("UI Manager - Start Level")]
+    public GameObject goalsImage;
     public GameObject readyImage;
     public GameObject goImage;
 
@@ -33,12 +34,17 @@ public class UIManager : MonoBehaviour
 
     [Header("UI Manager - Level Clear")]
     [SerializeField]
+    public float pourcentage;
     private float endTimer = 5;
     public GameObject finishScreen;
     public GameObject finishImage;
     public TextMeshProUGUI levelStatusText;
     public TextMeshProUGUI scoreTextEnd;
     public GameObject[] stars;
+
+    public Text goal1;
+    public Text goal2;
+    public Text goal3;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +53,7 @@ public class UIManager : MonoBehaviour
 
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
 
+        goalsImage.gameObject.SetActive(false);
         readyImage.gameObject.SetActive(false);
         goImage.gameObject.SetActive(false);
         finishImage.gameObject.SetActive(false);
@@ -71,21 +78,24 @@ public class UIManager : MonoBehaviour
         {
             LevelManager.instance.startLevelTimer -= Time.deltaTime;
 
+            goalsImage.gameObject.SetActive(true);
+
             if (LevelManager.instance.startLevelTimer <= 3)
             {
-                UIManager.instance.readyImage.gameObject.SetActive(true);
+                goalsImage.gameObject.SetActive(false);
+                readyImage.gameObject.SetActive(true);
             }
 
             if (LevelManager.instance.startLevelTimer <= 1)
             {
-                UIManager.instance.readyImage.gameObject.SetActive(false);
-                UIManager.instance.goImage.gameObject.SetActive(true);
+                readyImage.gameObject.SetActive(false);
+                goImage.gameObject.SetActive(true);
             }
         }
 
         if (LevelManager.instance.startLevelTimer <= 0)
         {
-            UIManager.instance.goImage.gameObject.SetActive(false);
+            goImage.gameObject.SetActive(false);
             LevelManager.instance.startLevelTimer = 0;
 
             LevelManager.instance.isGameInit = false;
@@ -95,7 +105,11 @@ public class UIManager : MonoBehaviour
         UpdateStressIndicator();
         UpdateTimer();
         UpdateLevelStatue();
-    }
+
+        goal1.text = (LevelManager.instance.scoreGoals * 0.2f).ToString(); 
+        goal2.text = (LevelManager.instance.scoreGoals * .5f + .5f).ToString();
+        goal3.text = LevelManager.instance.scoreGoals.ToString();
+    }   
 
     public void ChangeImage()
     {
@@ -194,7 +208,7 @@ public class UIManager : MonoBehaviour
                 activeScreen = false;
             }
 
-            float pourcentage = float.Parse(score.ToString()) / float.Parse(LevelManager.instance.scoreGoals.ToString()) * 100f;
+            pourcentage = float.Parse(score.ToString()) / float.Parse(LevelManager.instance.scoreGoals.ToString()) * 100f;
 
             if (pourcentage >= 33 && pourcentage < 66)
             {

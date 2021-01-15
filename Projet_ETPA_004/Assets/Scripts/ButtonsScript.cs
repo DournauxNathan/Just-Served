@@ -11,6 +11,10 @@ public class ButtonsScript : MonoBehaviour
     {
         GameManager.instance.LoadLevel();
     }
+    public void Settings()
+    {
+
+    }
 
     public void QuitGame()
     {
@@ -36,6 +40,14 @@ public class ButtonsScript : MonoBehaviour
     public void QuitLevel()
     {
         GameManager.instance.UnLoadLevel();
+    }
+    public void Continue()
+    {
+        SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive);
+    }
+    public void Restart()
+    {
+        SceneManager.LoadSceneAsync((int)SceneIndexes.LEVEL_1);
     }
 
 }
