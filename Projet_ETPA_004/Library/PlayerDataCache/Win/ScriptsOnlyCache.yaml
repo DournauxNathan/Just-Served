@@ -61,6 +61,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
     - Class: 104
@@ -74,31 +76,31 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11258}
     - Class: 114
-      Script: {instanceID: 11260}
-    - Class: 114
       Script: {instanceID: 11474}
     - Class: 114
-      Script: {instanceID: 11484}
+      Script: {instanceID: 11476}
     - Class: 114
-      Script: {instanceID: 11628}
+      Script: {instanceID: 11486}
     - Class: 114
-      Script: {instanceID: 11866}
+      Script: {instanceID: 11630}
     - Class: 114
-      Script: {instanceID: 11974}
+      Script: {instanceID: 11868}
     - Class: 114
-      Script: {instanceID: 12050}
+      Script: {instanceID: 11976}
     - Class: 114
-      Script: {instanceID: 12472}
+      Script: {instanceID: 12054}
     - Class: 114
-      Script: {instanceID: 12668}
+      Script: {instanceID: 12476}
     - Class: 114
-      Script: {instanceID: 12732}
+      Script: {instanceID: 12672}
     - Class: 114
-      Script: {instanceID: 12828}
+      Script: {instanceID: 12736}
     - Class: 114
-      Script: {instanceID: 13010}
+      Script: {instanceID: 12832}
     - Class: 114
-      Script: {instanceID: 13088}
+      Script: {instanceID: 13014}
+    - Class: 114
+      Script: {instanceID: 13092}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -108,6 +110,10 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -130,6 +136,12 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
@@ -139,15 +151,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11258}
     - Class: 114
-      Script: {instanceID: 11260}
+      Script: {instanceID: 11474}
     - Class: 114
-      Script: {instanceID: 11866}
+      Script: {instanceID: 11868}
     - Class: 114
-      Script: {instanceID: 12050}
+      Script: {instanceID: 12054}
     - Class: 114
-      Script: {instanceID: 12732}
+      Script: {instanceID: 12736}
     - Class: 114
-      Script: {instanceID: 13088}
+      Script: {instanceID: 13092}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -177,34 +189,36 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 49
       Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11256}
+      Script: {instanceID: 11258}
     - Class: 114
-      Script: {instanceID: 11260}
+      Script: {instanceID: 11474}
     - Class: 114
-      Script: {instanceID: 11778}
+      Script: {instanceID: 11780}
     - Class: 114
-      Script: {instanceID: 11866}
+      Script: {instanceID: 11868}
     - Class: 114
-      Script: {instanceID: 11892}
+      Script: {instanceID: 11894}
     - Class: 114
-      Script: {instanceID: 12472}
+      Script: {instanceID: 12476}
     - Class: 114
-      Script: {instanceID: 12486}
+      Script: {instanceID: 12490}
     - Class: 114
-      Script: {instanceID: 12668}
+      Script: {instanceID: 12672}
     - Class: 114
-      Script: {instanceID: 12674}
+      Script: {instanceID: 12678}
     - Class: 114
-      Script: {instanceID: 12732}
+      Script: {instanceID: 12736}
     - Class: 114
-      Script: {instanceID: 12884}
+      Script: {instanceID: 12888}
     - Class: 114
-      Script: {instanceID: 13086}
+      Script: {instanceID: 13090}
     - Class: 114
-      Script: {instanceID: 13088}
+      Script: {instanceID: 13092}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -228,12 +242,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Button
-  - hash:
-      serializedVersion: 2
-      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Image
   - hash:
       serializedVersion: 2
       Hash: aeb62f729c52c814dec86c47dcac1471
@@ -306,6 +314,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: 89f9a1b4c64db9559e39f4a2e3bfaadd
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Image
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -446,6 +460,12 @@ ScriptsOnlyBuild:
     className: SpawnManager
   - hash:
       serializedVersion: 2
+      Hash: fea00ed717fcb48b30d280f8192e2247
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SoundManager
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -572,7 +592,7 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
-      Hash: 7f41707c84473ee8c40302b4dfc01af4
+      Hash: 3381021792feedad243c6eb6932095dd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelManager
@@ -608,7 +628,7 @@ ScriptsOnlyBuild:
     className: PlayModeRunnerCallback
   - hash:
       serializedVersion: 2
-      Hash: d4881f194c84c33611d7af564de56b52
+      Hash: 83e8094e5051fec430be188c2b4713d5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -701,4 +721,4 @@ ScriptsOnlyBuild:
   - Assets/_Scenes/Persistent Scene.unity
   - Assets/_Scenes/Main_Menu.unity
   - Assets/_Scenes/Level_1.unity
-  playerPath: C:/Users/nathan/Desktop/Nathan_Jeu3D/Projet_ETPA_004.exe
+  playerPath: D:/UNITY/EXPORT/Projet_ETPA_004.exe

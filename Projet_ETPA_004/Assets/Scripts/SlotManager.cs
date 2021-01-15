@@ -16,7 +16,7 @@ public class SlotManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && playerControllerScript.isPlatePicked || Input.GetButtonDown("Fire1") && playerControllerScript.isPlatePicked)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag("Player") && this.transform != null)
             {
                 PlayerController.foodObject.gameObject.transform.SetParent(this.transform);
                 playerControllerScript.isPlatePicked = false;

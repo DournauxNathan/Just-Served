@@ -34,8 +34,8 @@ public class PlayerController : MonoBehaviour
     [Header("Sounds effects")]
     private AudioSource playerAudio;
     public AudioClip burnoutSound;
-    public AudioClip dropPlateSound;
     public AudioClip switchSound;
+    public AudioClip sendSound;
 
 
     // Start is called before the first frame update
@@ -75,11 +75,13 @@ public class PlayerController : MonoBehaviour
 
             if (sprintInput && isPlatePicked ||Input.GetKey(KeyCode.LeftShift) && isPlatePicked)
             {
+                playerAudio.Play();
                 minSpeed = maxSpeed;
                 IncreaseStressLevel(stressFactor);
             }
             else if (Input.GetKey(KeyCode.LeftShift) || sprintInput)
             {
+                playerAudio.Stop();
                 minSpeed = maxSpeed;
             }
             else
@@ -111,6 +113,8 @@ public class PlayerController : MonoBehaviour
             isTooStress = true;
             currentStressLevel = maxStressLevel;
 
+            playerAudio.PlayOneShot(burnoutSound, 1.0f);
+
             //Destroy the gameobject hold by the player 
             Destroy(foodObject);
         }
@@ -140,7 +144,6 @@ public class PlayerController : MonoBehaviour
 
                 burnoutParticles.Stop();
 
-                playerAudio.PlayOneShot(burnoutSound, 1.0f);
 
                 //The player has no more dishes
                 isPlatePicked = false;
@@ -168,7 +171,7 @@ public class PlayerController : MonoBehaviour
                     //Increment the score of point value
                     UIManager.instance.UpdateScore(1);
                 }
-
+                playerAudio.PlayOneShot(sendSound, 1.0f);
                 WinParticles.Play();
 
                 //Destroy the gameobject hold by the player 

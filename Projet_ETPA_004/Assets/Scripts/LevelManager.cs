@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     public bool isPaused = false;
     public float callIncreaseTemperature = 3;
     public float temperatureIncreaseValue = 1;
+    public GameObject airConditioner;
         /*Variables when temperature is decreasing*/
     public bool isAcOn = false;
     public float timerTemperature;
@@ -45,13 +46,17 @@ public class LevelManager : MonoBehaviour
 
     public ParticleSystem smokeParticules;
 
+    private AudioSource levelAudioSource;
+    public AudioClip levelClear;
+    public AudioClip levelFail;
+    public AudioClip alertTemperature;
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-
+        airConditioner = GameObject.Find("Air Conditioner");
         levelIndex = SceneManager.GetActiveScene().buildIndex;
-
+        levelAudioSource = GetComponent<AudioSource>();
         isGameInit = true;
 
         StartCoroutine(IncreaseTemperature());
@@ -67,13 +72,13 @@ public class LevelManager : MonoBehaviour
         if (levelIndex == 2)
         {
             levelCount = 1;
-            scoreGoals = 2;
+            scoreGoals = 15;
         }
 
         if (levelIndex == 3)
         {
             levelCount = 1;
-            scoreGoals = 3;
+            scoreGoals = 26;
         }
     }
 
@@ -83,13 +88,26 @@ public class LevelManager : MonoBehaviour
 
         if (isGameInit)
         {
+            smokeParticules.Stop();
             StartLevel();
         }
 
         if (isGameOver)
         {
             UIManager.instance.LevelClear();
+
+            if (UIManager.instance.pourcentage >= 33)
+            {
+                //levelAudioSource.PlayOneShot(levelClear, 1.0f);
+            }
+            else
+            {
+                //levelAudioSource.PlayOneShot(levelFail, 1.0f);
+            }
         }
+
+        var main = smokeParticules.main;
+        main.startLifetime = (UIManager.instance.temperatureBar.fillAmount);
     }
 
     public void StartLevel()
@@ -147,12 +165,13 @@ public class LevelManager : MonoBehaviour
             if ((temperature > (maxTemperature * .75f)) && temperature < maxTemperature)
             {
                 conveyorBeltSpeed = conveyorBeltMaxSpeed;
-                var main = smokeParticules.main;
-                main.startLifetime = (UIManager.instance.temperatureBar.fillAmount - .5f) * 100f;
+                levelAudioSource.Play();
+                smokeParticules.Play();
 
             }
             if (temperature < (maxTemperature * .7f))
             {
+                levelAudioSource.Stop();
                 conveyorBeltSpeed = 0.5f; ;
             }
         }
