@@ -2493,13 +2493,22 @@ PrefabInstance:
       propertyPath: rattlePlateSound
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5472063617001682817, guid: ce72a2b9d1f272f42a29e1136c9aa6ca,
+        type: 3}
+      propertyPath: burnoutSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 72949934fd98f1c47bd4cde8fb0173a8, type: 3}
+    - target: {fileID: 5472063617001682817, guid: ce72a2b9d1f272f42a29e1136c9aa6ca,
+        type: 3}
+      propertyPath: switchSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8109a392bce3e1e40a8c0d96be8e8c35, type: 3}
     - target: {fileID: 5472063617001682828, guid: ce72a2b9d1f272f42a29e1136c9aa6ca,
         type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 990545047, guid: ce72a2b9d1f272f42a29e1136c9aa6ca, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce72a2b9d1f272f42a29e1136c9aa6ca, type: 3}
 --- !u!1 &956494899
 GameObject:
