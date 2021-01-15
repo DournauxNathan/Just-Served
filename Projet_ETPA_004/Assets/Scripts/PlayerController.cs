@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [Header("Sounds effects")]
     private AudioSource playerAudio;
     public AudioClip burnoutSound;
+    public AudioClip rattlePlateSound;
     public AudioClip switchSound;
     public AudioClip sendSound;
 
@@ -75,13 +76,11 @@ public class PlayerController : MonoBehaviour
 
             if (sprintInput && isPlatePicked ||Input.GetKey(KeyCode.LeftShift) && isPlatePicked)
             {
-                playerAudio.Play();
                 minSpeed = maxSpeed;
                 IncreaseStressLevel(stressFactor);
             }
             else if (Input.GetKey(KeyCode.LeftShift) || sprintInput)
             {
-                playerAudio.Stop();
                 minSpeed = maxSpeed;
             }
             else

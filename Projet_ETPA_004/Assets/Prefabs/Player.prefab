@@ -4770,7 +4770,6 @@ GameObject:
   - component: {fileID: 5472063617001682823}
   - component: {fileID: 5472063617001682822}
   - component: {fileID: 2539701545359897425}
-  - component: {fileID: 990545047}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4879,8 +4878,8 @@ MonoBehaviour:
   isPlatePicked: 0
   isAcPressed: 0
   WinParticles: {fileID: 0}
+  playerAudio: {fileID: 0}
   burnoutSound: {fileID: 8300000, guid: 72949934fd98f1c47bd4cde8fb0173a8, type: 3}
-  rattlePlateSound: {fileID: 8300000, guid: 0cad15c7106a35d4083c770ce050b65a, type: 3}
   switchSound: {fileID: 8300000, guid: 8109a392bce3e1e40a8c0d96be8e8c35, type: 3}
   sendSound: {fileID: 8300000, guid: bb1370ceff5b9414f8f8157d9e4dc18e, type: 3}
 --- !u!136 &5472063617001682823
@@ -5009,14 +5008,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &990545047
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5472063617001682828}
-  m_Enabled: 1
 --- !u!1 &5472063618371297924
 GameObject:
   m_ObjectHideFlags: 0
