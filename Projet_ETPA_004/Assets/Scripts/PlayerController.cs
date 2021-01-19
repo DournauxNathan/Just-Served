@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private bool sprintInput;
     private bool spaceInput;
 
-    private SlotManager _slotManagerScript;
+    private GameObject hold;
 
     [Header("Player's Movement")]
     public float minSpeed = 2.5f;
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [Header("Sounds effects")]
     private AudioSource playerAudio;
     public AudioClip burnoutSound;
-    public AudioClip rattlePlateSound;
+    public AudioClip dropSound;
     public AudioClip switchSound;
     public AudioClip sendSound;
 
@@ -42,8 +42,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject stockage = GameObject.FindGameObjectWithTag("Stockage");
-        _slotManagerScript = stockage.GetComponentInChildren<SlotManager>();
+
+        hold = GameObject.Find("Object Holder");
 
         playerAudio = GetComponent<AudioSource>();
     }
@@ -60,6 +60,13 @@ public class PlayerController : MonoBehaviour
         isInteractPressed = Input.GetButtonDown("Fire1");
         sprintInput = Input.GetButton("Sprint");
         spaceInput = Input.GetButtonDown("Fire3");
+
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Time.timeScale = 0;
+            UIManager.instance.pauseScreen.gameObject.SetActive(true);
+            LevelManager.instance.isGamePaused = true;
+        }
     }
 
     public void Move()
@@ -109,10 +116,14 @@ public class PlayerController : MonoBehaviour
         if (currentStressLevel >= maxStressLevel)
         {
             burnoutParticles.Play();
+
             isTooStress = true;
+
             currentStressLevel = maxStressLevel;
 
             playerAudio.PlayOneShot(burnoutSound, 1.0f);
+
+            playerAudio.PlayOneShot(dropSound, 1.0f);
 
             //Destroy the gameobject hold by the player 
             Destroy(foodObject);
@@ -141,12 +152,10 @@ public class PlayerController : MonoBehaviour
                 //Set the stress of the character to false
                 isTooStress = false;
 
-                burnoutParticles.Stop();
-
-
                 //The player has no more dishes
                 isPlatePicked = false;
 
+                burnoutParticles.Stop();
             }
         }
     }
@@ -194,7 +203,9 @@ public class PlayerController : MonoBehaviour
                 foodObject = other.gameObject;
 
                 foodObject.GetComponent<MoveinDirection>().enabled = false;
-                foodObject.transform.SetParent(this.transform);
+                foodObject.transform.SetParent(hold.transform);
+                foodObject.gameObject.transform.position = hold.transform.position;
+
                 isPlatePicked = true;
             }
         }
