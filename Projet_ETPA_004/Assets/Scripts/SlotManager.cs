@@ -16,12 +16,13 @@ public class SlotManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && playerControllerScript.isPlatePicked || Input.GetButtonDown("Fire1") && playerControllerScript.isPlatePicked)
         {
-            if (other.CompareTag("Player") && this.transform != null)
+            if (other.CompareTag("Player") && this.transform.childCount == 0)
             {
                 PlayerController.foodObject.gameObject.transform.SetParent(this.transform);
+                PlayerController.foodObject.gameObject.transform.position = this.transform.position;
+
                 playerControllerScript.isPlatePicked = false;
             }
-        }
-        
+        }        
     }
 }

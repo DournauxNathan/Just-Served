@@ -22,8 +22,9 @@ public class LevelManager : MonoBehaviour
     public bool isPaused = false;
     public float callIncreaseTemperature = 3;
     public float temperatureIncreaseValue = 1;
-    public GameObject airConditioner;
-        /*Variables when temperature is decreasing*/
+    private GameObject airConditioner;
+    private Renderer acRend;
+    /*Variables when temperature is decreasing*/
     public bool isAcOn = false;
     public float timerTemperature;
     public float temperature = 19;
@@ -55,9 +56,12 @@ public class LevelManager : MonoBehaviour
     {
         instance = this;
         airConditioner = GameObject.Find("Air Conditioner");
+        acRend = airConditioner.GetComponent<Renderer>();
         levelIndex = SceneManager.GetActiveScene().buildIndex;
         levelAudioSource = GetComponent<AudioSource>();
         isGameInit = true;
+
+        smokeParticules.Clear();
 
         StartCoroutine(IncreaseTemperature());
         SetGoalsLevels();
@@ -95,6 +99,8 @@ public class LevelManager : MonoBehaviour
         if (isGameOver)
         {
             UIManager.instance.LevelClear();
+
+            levelAudioSource.Stop();
 
             if (UIManager.instance.pourcentage >= 33)
             {
@@ -138,6 +144,13 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    private IEnumerator startParticules()
+    {
+        yield return null;
+        Debug.Log("ok");
+        smokeParticules.Play();
+    }
+
     public void AirConditionOn()
     {
         StartCoroutine(DecreaseTemperature());
@@ -156,6 +169,7 @@ public class LevelManager : MonoBehaviour
             {
                 temperature += temperatureIncreaseValue;
 
+
                 if (temperature >= maxTemperature)
                 {
                     temperature = maxTemperature;
@@ -164,13 +178,14 @@ public class LevelManager : MonoBehaviour
 
             if ((temperature > (maxTemperature * .75f)) && temperature < maxTemperature)
             {
+                acRend.material.SetColor("_Color", Color.red);
                 conveyorBeltSpeed = conveyorBeltMaxSpeed;
                 levelAudioSource.Play();
-                smokeParticules.Play();
-
+                StartCoroutine(startParticules());
             }
             if (temperature < (maxTemperature * .7f))
             {
+                acRend.material.SetColor("_Color", Color.white);
                 levelAudioSource.Stop();
                 conveyorBeltSpeed = 0.5f; ;
             }

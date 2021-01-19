@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class ButtonsScript : MonoBehaviour
 {
+    public GameObject settingsMenu;
+
+    public AudioMixer audioMixer;
 
     /*Functions in the Main Menu*/
     public void PressToPlay()
@@ -13,21 +17,23 @@ public class ButtonsScript : MonoBehaviour
     }
     public void Settings()
     {
+        settingsMenu.gameObject.SetActive(true);
+    }
 
+    public void Return()
+    {
+        settingsMenu.gameObject.SetActive(false);
+    }
+
+    public void SetVolume (float volume)
+    {
+        audioMixer.SetFloat("Volume", volume);
     }
 
     public void QuitGame()
     {
         Debug.Log("QUIT");
         Application.Quit();
-    }
-
-    /*Function use in Levels*/
-    public void PauseGame()
-    {
-        Time.timeScale = 0;
-        UIManager.instance.pauseScreen.gameObject.SetActive(true);
-        LevelManager.instance.isGamePaused = true;
     }
 
     public void ResumeGame()
@@ -39,6 +45,7 @@ public class ButtonsScript : MonoBehaviour
 
     public void QuitLevel()
     {
+        Time.timeScale = 1;
         GameManager.instance.UnLoadLevel();
     }
     public void Continue()

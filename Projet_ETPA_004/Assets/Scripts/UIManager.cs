@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     public Image[] stressIndicator;
+    public Slider stressBar;
 
     public TextMeshProUGUI temperatureText;
     public Image temperatureBar;
@@ -145,6 +146,9 @@ public class UIManager : MonoBehaviour
 
     public void UpdateStressIndicator()
     {
+        stressBar.value = playerControllerScript.currentStressLevel / playerControllerScript.maxStressLevel;
+
+
         if (playerControllerScript.currentStressLevel < (playerControllerScript.maxStressLevel * .25f))
         {
             stressIndicator[0].gameObject.SetActive(true);
@@ -157,21 +161,11 @@ public class UIManager : MonoBehaviour
             stressIndicator[1].gameObject.SetActive(true);
             stressIndicator[2].gameObject.SetActive(false);
         }
-        else if(playerControllerScript.currentStressLevel >= (playerControllerScript.maxStressLevel * .75f))
+        else if(playerControllerScript.isTooStress)
         {
             stressIndicator[0].gameObject.SetActive(false);
             stressIndicator[1].gameObject.SetActive(false);
             stressIndicator[2].gameObject.SetActive(true);
-        }
-
-        if (playerControllerScript.isTooStress)
-        {
-            stressIndicator[2].GetComponent<Image>().color = new Color32(162, 48, 72, 100);
-        }
-
-        if (!playerControllerScript.isTooStress)
-        {
-            stressIndicator[0].GetComponent<Image>().color = new Color32(0, 255, 0, 100);
         }
     }
 

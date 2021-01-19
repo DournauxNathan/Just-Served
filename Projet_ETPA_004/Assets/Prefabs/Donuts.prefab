@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3300000}
   - component: {fileID: 2300000}
   - component: {fileID: 3402114509526822906}
-  - component: {fileID: 6956354392115345957}
+  - component: {fileID: -2822210575005366902}
   m_Layer: 0
   m_Name: Donuts
   m_TagString: Food
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyAtZPosition: 4
   destroyAtXPosition: -8
---- !u!65 &6956354392115345957
+--- !u!65 &-2822210575005366902
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,5 +106,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7928112, y: 0.22004953, z: 0.19081734}
-  m_Center: {x: 0.27632633, y: 0.110024765, z: -0.000000023841858}
+  m_Size: {x: 1.3, y: 0.22004955, z: 0.19081734}
+  m_Center: {x: 0, y: 0.11002476, z: -0.000000022351742}
