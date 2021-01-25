@@ -33,12 +33,10 @@ public class GameManager : MonoBehaviour
 
     public void UnLoadLevel()
     {
-        loadingScreen.gameObject.SetActive(true);
 
         scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.LEVEL_1));
         scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive));
 
-        StartCoroutine(GetSceneLoadProgress());
     }
 
     float totalSceneProgress;
