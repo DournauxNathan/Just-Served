@@ -7,8 +7,7 @@ using UnityEngine.Audio;
 public class ButtonsScript : MonoBehaviour
 {
     public GameObject settingsMenu;
-
-    public AudioMixer audioMixer;
+    public GameObject servText;
 
     /*Functions in the Main Menu*/
     public void PressToPlay()
@@ -25,10 +24,6 @@ public class ButtonsScript : MonoBehaviour
         settingsMenu.gameObject.SetActive(false);
     }
 
-    public void SetVolume (float volume)
-    {
-        audioMixer.SetFloat("Volume", volume);
-    }
 
     public void QuitGame()
     {
@@ -41,11 +36,12 @@ public class ButtonsScript : MonoBehaviour
         Time.timeScale = 1;
         UIManager.instance.pauseScreen.gameObject.SetActive(false);
         LevelManager.instance.isGamePaused = false;
+
+        servText.gameObject.SetActive(true);
     }
 
     public void QuitLevel()
     {
-        Time.timeScale = 1;
         GameManager.instance.UnLoadLevel();
     }
     public void Continue()
