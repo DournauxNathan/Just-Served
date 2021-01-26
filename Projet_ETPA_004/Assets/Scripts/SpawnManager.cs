@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Ce script gère l'apparition des objets dans un niveau
+/// </summary>
 public class SpawnManager : MonoBehaviour
 {
     // Liste d'objet qui contient les prefabs des plats

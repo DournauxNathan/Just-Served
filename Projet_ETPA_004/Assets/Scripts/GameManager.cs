@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Ce script permet de créer un écran de chargement (utile pour plus tard)
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -35,7 +38,9 @@ public class GameManager : MonoBehaviour
     {
 
         scenesLoading.Add(SceneManager.UnloadSceneAsync((int)SceneIndexes.LEVEL_1));
-        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.TITLE_SCREEN, LoadSceneMode.Additive));
+        scenesLoading.Add(SceneManager.LoadSceneAsync((int)SceneIndexes.MANAGER));
+
+
 
     }
 

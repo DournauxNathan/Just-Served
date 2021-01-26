@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 
+/// <summary>
+/// Ce script gère tout les évéments des différents menus 
+/// Transisition, chargements des scènes
+/// </summary>
 public class ButtonsScript : MonoBehaviour
 {
     public GameObject settingsMenu;
@@ -27,7 +31,6 @@ public class ButtonsScript : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("QUIT");
         Application.Quit();
     }
 
@@ -42,6 +45,8 @@ public class ButtonsScript : MonoBehaviour
 
     public void QuitLevel()
     {
+
+        Time.timeScale = 1;
         GameManager.instance.UnLoadLevel();
     }
     public void Continue()
