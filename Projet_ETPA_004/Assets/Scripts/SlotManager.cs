@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Ce script permet de poser un plat sur la table 
+/// </summary>
 public class SlotManager : MonoBehaviour
 {
     private PlayerController playerControllerScript;

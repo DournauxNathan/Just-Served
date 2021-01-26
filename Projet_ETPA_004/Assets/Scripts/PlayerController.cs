@@ -83,11 +83,6 @@ public class PlayerController : MonoBehaviour
         sprintInput = Input.GetButton("Sprint");
         spaceInput = Input.GetButtonDown("Fire3");
 
-        if (sprintInput || spaceInput || isInteractPressed)
-        {
-            Debug.Log("kk");
-        }
-
         if (!LevelManager.instance.isGameInit && !LevelManager.instance.isGameOver)
         {
             // Si le niveau n'est pas initialisée et que le jeu n'est pas terminé...

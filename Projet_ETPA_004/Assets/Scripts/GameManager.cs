@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
+/// <summary>
+/// Ce script permet de créer un écran de chargement (utile pour plus tard)
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
